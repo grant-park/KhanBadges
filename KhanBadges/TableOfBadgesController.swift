@@ -251,7 +251,7 @@ extension TableOfBadgesController: UISearchBarDelegate {
     
     // Filters the display of search results in real time as the keyboard is typing; the use of NSPredicate here is the core reason for my choice of NSArrays earlier
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        let thePredicate: NSPredicate = NSPredicate(format: "description contains %@", searchText)
+        let thePredicate: NSPredicate = NSPredicate(format: "description contains[cd] %@", searchText)
         let theSecondPredicate: NSPredicate = NSPredicate(format: "badge_category = %d", categoryIndex)
         let theCompoundPredicate: NSCompoundPredicate = NSCompoundPredicate(andPredicateWithSubpredicates: [thePredicate,theSecondPredicate])
         let filteredArray: NSArray = theData!.filteredArrayUsingPredicate(theCompoundPredicate)
