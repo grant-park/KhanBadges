@@ -48,7 +48,7 @@ import QuartzCore
     {
         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
         self.view.alpha = 0.0;
-        UIView.animateWithDuration(0.1, animations: {
+        UIView.animateWithDuration(0.01, animations: {
             self.view.alpha = 1.0
             self.view.transform = CGAffineTransformMakeScale(1.0, 1.0)
         });
@@ -56,7 +56,7 @@ import QuartzCore
     
     func removeAnimate()
     {
-        UIView.animateWithDuration(0.1, animations: {
+        UIView.animateWithDuration(0.01, animations: {
             self.view.transform = CGAffineTransformMakeScale(1.3, 1.3)
             self.view.alpha = 0.0;
             }, completion:{(finished : Bool)  in

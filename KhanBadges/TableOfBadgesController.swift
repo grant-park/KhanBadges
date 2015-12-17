@@ -135,7 +135,7 @@ class TableOfBadgesController: UIViewController {
     // Sprucing up UI with scrolling effect
     func scrollViewDidEndDragging(scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if state == .DefaultMode {
-            if self.collectionView.panGestureRecognizer.translationInView(self.view).y <= 0.0 {
+            if self.collectionView.panGestureRecognizer.translationInView(self.view).y < 0.0 {
                 defaultCenter.postNotificationName("stuffShouldHide", object: self)
             } else {
                 defaultCenter.postNotificationName("stuffShouldUnhide", object: self)
