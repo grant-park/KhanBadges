@@ -18,20 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgK-S8-dx6">
-                                <rect key="frame" x="238" y="342" width="124" height="39"/>
-                                <color key="backgroundColor" red="0.082352941176470587" green="0.11372549019607843" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="Xet-wI-Hjl"/>
-                                    <constraint firstAttribute="width" constant="124" id="oH9-q3-v1c"/>
-                                </constraints>
-                                <state key="normal" title="Refresh">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Ka-aX-fdk"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No internet connection :(" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jHm-pk-ZiQ">
                                 <rect key="frame" x="200" y="290" width="201" height="22"/>
                                 <constraints>
@@ -51,6 +37,20 @@
                                 <color key="textColor" red="0.94652037889999996" green="0.94286296290000005" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgK-S8-dx6">
+                                <rect key="frame" x="238" y="342" width="124" height="39"/>
+                                <color key="backgroundColor" red="0.082352941176470587" green="0.11372549019607843" blue="0.15686274509803921" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="39" id="Xet-wI-Hjl"/>
+                                    <constraint firstAttribute="width" constant="124" id="oH9-q3-v1c"/>
+                                </constraints>
+                                <state key="normal" title="Refresh">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Ka-aX-fdk"/>
+                                </connections>
+                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Chn-g9-I3t">
                                 <rect key="frame" x="63" y="109" width="474" height="425"/>
                                 <subviews>
@@ -281,7 +281,9 @@
                         <outlet property="earthBadge" destination="c0v-i0-zsN" id="KaU-nz-cic"/>
                         <outlet property="meteoriteBadge" destination="vX9-mS-Rp4" id="2KX-pn-vEy"/>
                         <outlet property="moonBadge" destination="xLx-EE-oRX" id="Bhs-bU-kB0"/>
+                        <outlet property="refreshButton" destination="dgK-S8-dx6" id="rRa-Kf-lw3"/>
                         <outlet property="sunBadge" destination="QoE-dX-DwH" id="imK-OB-Sd3"/>
+                        <outlet property="theStackView" destination="Chn-g9-I3t" id="pus-1R-Cze"/>
                         <segue destination="sGl-yX-iJV" kind="show" identifier="toTable" id="EfG-st-GtF"/>
                     </connections>
                 </viewController>

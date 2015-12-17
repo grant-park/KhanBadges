@@ -23,6 +23,8 @@ class ViewController: UIViewController {
             self.getAllBadges()
         }
     }
+    @IBOutlet var refreshButton: UIButton!
+    @IBOutlet var theStackView: UIStackView!
     
     // The correct category index will be chosen so that the following view controller will have the right badge set.
     @IBOutlet weak var challengePatch: UIButton!
@@ -123,10 +125,14 @@ class ViewController: UIViewController {
         APIManager.sharedInstance.getCategories { (json) -> Void in
             if json == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.theStackView.alpha = 0.0
+                    self.refreshButton.hidden = false
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.theStackView.alpha = 1.0
+                    self.refreshButton.hidden = true
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                     for (var i=0; i<6; i++) {
                         if let jsonToString = json[i]["large_icon_src"].rawString() {
@@ -151,11 +157,15 @@ class ViewController: UIViewController {
         APIManager.sharedInstance.getBadges { (json) -> Void in
             if json == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.theStackView.alpha = 0.0
+                    self.refreshButton.hidden = false
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 })
             } else {
                 self.jsonData = json
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.theStackView.alpha = 1.0
+                    self.refreshButton.hidden = true
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 })
                 // Enable the buttons.
