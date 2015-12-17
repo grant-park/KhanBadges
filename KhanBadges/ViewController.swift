@@ -91,6 +91,7 @@ class ViewController: UIViewController {
                     self.noConnectionLabel.hidden = true
                     self.refreshButton.hidden = true
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    self.collectionView.reloadData()
                 })
             }
         }
