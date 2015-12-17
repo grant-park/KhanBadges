@@ -153,7 +153,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         let theLayer = cell.image.layer
         theLayer.masksToBounds = false
         theLayer.shadowColor = UIColor.blackColor().CGColor
-        theLayer.shadowRadius = 7.0
+        theLayer.shadowRadius = 4.0
         theLayer.shadowOpacity = 0.75
         
         
