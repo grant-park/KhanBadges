@@ -24,6 +24,7 @@ class ViewController: UIViewController {
         }
     }
     @IBOutlet var refreshButton: UIButton!
+    @IBOutlet var noConnectionLabel: UILabel!
     @IBOutlet var theStackView: UIStackView!
     
     // The correct category index will be chosen so that the following view controller will have the right badge set.
@@ -112,6 +113,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.refreshButton.hidden = true
+        self.noConnectionLabel.hidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
@@ -127,12 +129,14 @@ class ViewController: UIViewController {
             if json == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.theStackView.alpha = 0.0
+                    self.noConnectionLabel.hidden = false
                     self.refreshButton.hidden = false
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.theStackView.alpha = 1.0
+                    self.noConnectionLabel.hidden = true
                     self.refreshButton.hidden = true
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                     for (var i=0; i<6; i++) {
@@ -159,6 +163,7 @@ class ViewController: UIViewController {
             if json == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.theStackView.alpha = 0.0
+                    self.noConnectionLabel.hidden = false
                     self.refreshButton.hidden = false
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 })
@@ -166,6 +171,7 @@ class ViewController: UIViewController {
                 self.jsonData = json
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.theStackView.alpha = 1.0
+                    self.noConnectionLabel.hidden = true
                     self.refreshButton.hidden = true
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 })
