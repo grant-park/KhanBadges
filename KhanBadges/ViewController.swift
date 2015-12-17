@@ -111,6 +111,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        self.refreshButton.hidden = true
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
