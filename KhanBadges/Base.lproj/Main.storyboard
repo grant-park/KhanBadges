@@ -101,6 +101,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="5vk-RV-exP"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UqU-Go-UvR">
+                                <rect key="frame" x="546" y="566" width="22" height="22"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <action selector="infoPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q01-Cs-Kb4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.50980392156862742" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -108,11 +115,13 @@
                             <constraint firstItem="dgK-S8-dx6" firstAttribute="top" secondItem="jHm-pk-ZiQ" secondAttribute="bottom" constant="30" id="EeQ-5Y-Sbe"/>
                             <constraint firstItem="jHm-pk-ZiQ" firstAttribute="centerX" secondItem="dgK-S8-dx6" secondAttribute="centerX" id="Gwf-Ld-92L"/>
                             <constraint firstItem="THm-dh-oeH" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" constant="-8" id="IwD-Pb-5HD"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="UqU-Go-UvR" secondAttribute="bottom" constant="12" id="Sgq-CI-OVd"/>
                             <constraint firstItem="jHm-pk-ZiQ" firstAttribute="centerX" secondItem="iUD-Oc-5qq" secondAttribute="centerX" id="X40-Dt-gYz"/>
                             <constraint firstAttribute="trailing" secondItem="iUD-Oc-5qq" secondAttribute="trailing" id="ZfJ-3a-vge"/>
                             <constraint firstItem="THm-dh-oeH" firstAttribute="top" secondItem="iUD-Oc-5qq" secondAttribute="bottom" constant="8" id="dci-cX-B6p"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="dgK-S8-dx6" secondAttribute="bottom" constant="219" id="jQi-Qt-lxl"/>
                             <constraint firstItem="iUD-Oc-5qq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="mX3-Zy-dOF"/>
+                            <constraint firstItem="UqU-Go-UvR" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" constant="-12" id="nX2-Hi-Sw4"/>
                             <constraint firstItem="iUD-Oc-5qq" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="rnA-YB-aVT"/>
                             <constraint firstItem="THm-dh-oeH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="z3g-tP-1hp"/>
                         </constraints>
@@ -120,8 +129,8 @@
                     <navigationItem key="navigationItem" id="hdT-Pa-rYO"/>
                     <connections>
                         <outlet property="collectionView" destination="THm-dh-oeH" id="vz1-rF-Cgk"/>
-                        <outlet property="noConnectionLabel" destination="jHm-pk-ZiQ" id="dKy-0h-rIh"/>
-                        <outlet property="refreshButton" destination="dgK-S8-dx6" id="rRa-Kf-lw3"/>
+                        <outlet property="noConnectionLabel" destination="jHm-pk-ZiQ" id="Yrf-wi-sv8"/>
+                        <outlet property="refreshButton" destination="dgK-S8-dx6" id="unX-KI-m1o"/>
                         <segue destination="sGl-yX-iJV" kind="show" identifier="toTable" id="EfG-st-GtF"/>
                     </connections>
                 </viewController>

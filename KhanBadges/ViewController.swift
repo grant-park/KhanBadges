@@ -23,9 +23,19 @@ class ViewController: UIViewController {
             self.getAllBadges()
         }
     }
-    @IBOutlet var refreshButton: UIButton!
-    @IBOutlet var noConnectionLabel: UILabel!
+
+    @IBOutlet weak var refreshButton: UIButton!
+    @IBOutlet weak var noConnectionLabel: UILabel!
+    
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBAction func infoPressed(sender: AnyObject) {
+        let alert = UIAlertController(title: "About", message: "The following third-party frameworks are used in this application: \n \n SDWebImage \n \n NMPopUpViewSwift \n \n MBProgressHUD \n \n SwiftyJSON", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: {
+            (alertAction: UIAlertAction!) in
+            alert.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
     
     //MARK: Variables
     

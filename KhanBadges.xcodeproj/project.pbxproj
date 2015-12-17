@@ -62,14 +62,10 @@
 		930302081C1FD526007416B2 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		9303020A1C1FE1D3007416B2 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		9303020C1C1FE1DA007416B2 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = "Pods/../build/Debug-iphoneos/SDWebImage.framework"; sourceTree = "<group>"; };
-		9303020F1C1FF611007416B2 /* PBJHexagon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PBJHexagon.framework; path = "Pods/../build/Debug-iphoneos/PBJHexagon.framework"; sourceTree = "<group>"; };
 		930F63311C232721005A5EDE /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		938D21951C2024A300CCE728 /* TableOfBadgesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "\U0010TableOfBadgesController.swift"; sourceTree = "<group>"; };
 		93DA38841C21AE0600FFB51F /* SwiftLoader.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftLoader.framework; path = "Pods/../build/Debug-iphoneos/SwiftLoader.framework"; sourceTree = "<group>"; };
 		93DA38861C21B39000FFB51F /* MBProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MBProgressHUD.framework; path = "Pods/../build/Debug-iphoneos/MBProgressHUD.framework"; sourceTree = "<group>"; };
-		93DA388B1C21F22600FFB51F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
-		93DA38901C224BCB00FFB51F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = "Pods/../build/Debug-iphoneos/RealmSwift.framework"; sourceTree = "<group>"; };
-		93DA38921C224BF100FFB51F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = "Pods/../build/Debug-iphoneos/Realm.framework"; sourceTree = "<group>"; };
 		93F107AB1C20BE3600124EEF /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		93F107AD1C20CD4F00124EEF /* BadgeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgeCell.swift; sourceTree = "<group>"; };
 		93F107B51C20E7AC00124EEF /* NMPopUpViewSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NMPopUpViewSwift.framework; path = "Pods/../build/Debug-iphoneos/NMPopUpViewSwift.framework"; sourceTree = "<group>"; };
@@ -120,14 +116,10 @@
 		5BB0C90F38FECC1EB0547931 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				93DA38921C224BF100FFB51F /* Realm.framework */,
-				93DA38901C224BCB00FFB51F /* RealmSwift.framework */,
-				93DA388B1C21F22600FFB51F /* Realm.framework */,
 				93DA38861C21B39000FFB51F /* MBProgressHUD.framework */,
 				93DA38841C21AE0600FFB51F /* SwiftLoader.framework */,
 				93F107B51C20E7AC00124EEF /* NMPopUpViewSwift.framework */,
 				93F107AB1C20BE3600124EEF /* QuartzCore.framework */,
-				9303020F1C1FF611007416B2 /* PBJHexagon.framework */,
 				9303020C1C1FE1DA007416B2 /* SDWebImage.framework */,
 				9303020A1C1FE1D3007416B2 /* SwiftyJSON.framework */,
 				BF531238E5D6AA5FC47A0416 /* Pods.framework */,
