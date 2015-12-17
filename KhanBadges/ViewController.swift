@@ -25,8 +25,8 @@ class ViewController: UIViewController {
     }
     @IBOutlet var refreshButton: UIButton!
     @IBOutlet var noConnectionLabel: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView!
+    
     //MARK: Variables
     
     // This is set when the user chooses a category (AKA presses a button)
@@ -66,7 +66,7 @@ class ViewController: UIViewController {
     
     //MARK: Manager Functions
     
-    // Using a singleton to handle REST
+    // Using a singleton to handle api call for the categories
     func getCategories() {
         APIManager.sharedInstance.getCategories { (json) -> Void in
             if json == nil {
@@ -86,7 +86,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // Using the singleton to handle REST
+    // Using the singleton to get all the badges
     func getAllBadges() {
         APIManager.sharedInstance.getBadges { (json) -> Void in
             if json == nil {
@@ -148,25 +148,30 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("categoryBadge", forIndexPath: indexPath) as! CategoryCell
         
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("categoryBadge", forIndexPath: indexPath) as! CategoryCell
+
+        if let theData = categoryData {
+            cell.image.sd_setImageWithURL(NSURL(string: theData[indexPath.row]["large_icon_src"].rawString()!))
+            cell.aDescription.text = theData[indexPath.row]["type_label"].rawString()!
+        }
+        
+        // Sprucing up the UI
         let theLayer = cell.image.layer
         theLayer.masksToBounds = false
         theLayer.shadowColor = UIColor.blackColor().CGColor
         theLayer.shadowRadius = 4.0
         theLayer.shadowOpacity = 0.75
         
-        
-        if let theData = categoryData {
-            cell.image.sd_setImageWithURL(NSURL(string: theData[indexPath.row]["large_icon_src"].rawString()!))
-            cell.aDescription.text = theData[indexPath.row]["type_label"].rawString()!
-        }
-        
         return cell
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        if let theData = categoryData {
+            return theData.count
+        } else {
+            return 6
+        }
     }
     
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {

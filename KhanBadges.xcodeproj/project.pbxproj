@@ -162,13 +162,10 @@
 			isa = PBXGroup;
 			children = (
 				930301DA1C1FD093007416B2 /* AppDelegate.swift */,
-				930302081C1FD526007416B2 /* APIManager.swift */,
-				93F107AD1C20CD4F00124EEF /* BadgeCell.swift */,
-				930301DC1C1FD093007416B2 /* ViewController.swift */,
-				938D21951C2024A300CCE728 /* TableOfBadgesController.swift */,
-				930F63311C232721005A5EDE /* CategoryCell.swift */,
-				930301DE1C1FD093007416B2 /* Main.storyboard */,
-				930301E31C1FD093007416B2 /* LaunchScreen.storyboard */,
+				9372FC041C2340C200D56F70 /* Managers */,
+				9372FC031C23409900D56F70 /* Models */,
+				9372FC011C23405D00D56F70 /* ViewControllers */,
+				9372FC051C2340E000D56F70 /* User Interface */,
 				930301E11C1FD093007416B2 /* Assets.xcassets */,
 				930301E61C1FD093007416B2 /* Info.plist */,
 			);
@@ -191,6 +188,41 @@
 				930301FC1C1FD093007416B2 /* Info.plist */,
 			);
 			path = KhanBadgesUITests;
+			sourceTree = "<group>";
+		};
+		9372FC011C23405D00D56F70 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				930301DC1C1FD093007416B2 /* ViewController.swift */,
+				938D21951C2024A300CCE728 /* TableOfBadgesController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		9372FC031C23409900D56F70 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				930F63311C232721005A5EDE /* CategoryCell.swift */,
+				93F107AD1C20CD4F00124EEF /* BadgeCell.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		9372FC041C2340C200D56F70 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				930302081C1FD526007416B2 /* APIManager.swift */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		9372FC051C2340E000D56F70 /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				930301DE1C1FD093007416B2 /* Main.storyboard */,
+				930301E31C1FD093007416B2 /* LaunchScreen.storyboard */,
+			);
+			name = "User Interface";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
