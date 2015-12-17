@@ -25,72 +25,24 @@ class ViewController: UIViewController {
     }
     @IBOutlet var refreshButton: UIButton!
     @IBOutlet var noConnectionLabel: UILabel!
-    @IBOutlet var theStackView: UIStackView!
     
-    // The correct category index will be chosen so that the following view controller will have the right badge set.
-    @IBOutlet weak var challengePatch: UIButton!
-    @IBAction func challengePressed(sender: AnyObject) {
-        self.selectedCategory = 5
-        self.performSegueWithIdentifier("toTable", sender: self)
-    }
-    @IBOutlet weak var blackHoleBadge: UIButton!
-    @IBAction func blackHolePressed(sender: AnyObject) {
-        self.selectedCategory = 4
-        self.performSegueWithIdentifier("toTable", sender: self)
-    }
-    @IBOutlet weak var sunBadge: UIButton!
-    @IBAction func sunPressed(sender: AnyObject) {
-        self.selectedCategory = 3
-        self.performSegueWithIdentifier("toTable", sender: self)
-    }
-    @IBOutlet weak var earthBadge: UIButton!
-    @IBAction func earthPressed(sender: AnyObject) {
-        self.selectedCategory = 2
-        self.performSegueWithIdentifier("toTable", sender: self)
-    }
-    @IBOutlet weak var moonBadge: UIButton!
-    @IBAction func moonPressed(sender: AnyObject) {
-        self.selectedCategory = 1
-        self.performSegueWithIdentifier("toTable", sender: self)
-    }
-    @IBOutlet weak var meteoriteBadge: UIButton!
-    @IBAction func meteoritePressed(sender: AnyObject) {
-        self.selectedCategory = 0
-        self.performSegueWithIdentifier("toTable", sender: self)
-    }
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     //MARK: Variables
     
     // This is set when the user chooses a category (AKA presses a button)
     var selectedCategory: Int = 0
     
-    // Array of category buttons
-    var arrayOfBadges:[UIButton] = []
-    
-    // Array of category descriptions
-    var arrayOfDescriptions: [String] = []
-    
     // JSON Data
     var jsonData: JSON?
+    var categoryData: JSON?
     
     //MARK: viewDidLoad()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Will iterate over this array of buttons
-        arrayOfBadges.append(meteoriteBadge)
-        arrayOfBadges.append(moonBadge)
-        arrayOfBadges.append(earthBadge)
-        arrayOfBadges.append(sunBadge)
-        arrayOfBadges.append(blackHoleBadge)
-        arrayOfBadges.append(challengePatch)
-        
-        // Buttons are disabled until the categories have been populated.
-        for each in arrayOfBadges {
-            each.userInteractionEnabled = false
-        }
-        
+        self.collectionView.hidden = true
+
         MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_HIGH, 0)) { () -> Void in
             // Populate the first view with the 6 different categories.
@@ -100,15 +52,6 @@ class ViewController: UIViewController {
             self.getAllBadges()
         }
         
-        // Sprucing up some UI
-        for each in arrayOfBadges {
-            each.imageView?.layer.masksToBounds = false
-            each.imageView?.layer.shadowColor = UIColor.blackColor().CGColor
-            each.imageView?.layer.shadowRadius = 7.0
-            each.imageView?.layer.shadowOpacity = 0.75
-            each.imageView?.sizeThatFits(CGSizeMake(70.0, 70.0))
-            each.contentMode = UIViewContentMode.Center
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -128,30 +71,16 @@ class ViewController: UIViewController {
         APIManager.sharedInstance.getCategories { (json) -> Void in
             if json == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.theStackView.alpha = 0.0
                     self.noConnectionLabel.hidden = false
                     self.refreshButton.hidden = false
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.theStackView.alpha = 1.0
+                    self.categoryData = json
                     self.noConnectionLabel.hidden = true
                     self.refreshButton.hidden = true
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
-                    for (var i=0; i<6; i++) {
-                        if let jsonToString = json[i]["large_icon_src"].rawString() {
-                            let theURL = NSURL(string: jsonToString)
-                            self.arrayOfBadges[i].sd_setImageWithURL(theURL, forState: .Normal)
-                        } else {
-                            print("Something went wrong...")
-                        }
-                        if let description = json[i]["description"].rawString() {
-                            self.arrayOfDescriptions.append(description)
-                        } else {
-                            print("Something went wrong...")
-                        }
-                    }
                 })
             }
         }
@@ -162,7 +91,6 @@ class ViewController: UIViewController {
         APIManager.sharedInstance.getBadges { (json) -> Void in
             if json == nil {
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.theStackView.alpha = 0.0
                     self.noConnectionLabel.hidden = false
                     self.refreshButton.hidden = false
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
@@ -170,15 +98,12 @@ class ViewController: UIViewController {
             } else {
                 self.jsonData = json
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.theStackView.alpha = 1.0
+                    self.collectionView.hidden = false
                     self.noConnectionLabel.hidden = true
                     self.refreshButton.hidden = true
                     MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
+                    self.collectionView.reloadData()
                 })
-                // Enable the buttons.
-                for each in self.arrayOfBadges {
-                    each.userInteractionEnabled = true
-                }
             }
         }
     }
@@ -193,30 +118,60 @@ class ViewController: UIViewController {
         case 0:
             table.categoryIndex = 0
             table.theTitle = "Meteorite Badges"
-            table.aDescription = self.arrayOfDescriptions[0]
+            table.aDescription = self.categoryData![0]["description"].rawString()!
         case 1:
             table.categoryIndex = 1
             table.theTitle = "Moon Badges"
-            table.aDescription = self.arrayOfDescriptions[1]
+            table.aDescription = self.categoryData![1]["description"].rawString()!
         case 2:
             table.categoryIndex = 2
             table.theTitle = "Earth Badges"
-            table.aDescription = self.arrayOfDescriptions[2]
+            table.aDescription = self.categoryData![2]["description"].rawString()!
         case 3:
             table.categoryIndex = 3
             table.theTitle = "Sun Badges"
-            table.aDescription = self.arrayOfDescriptions[3]
+            table.aDescription = self.categoryData![3]["description"].rawString()!
         case 4:
             table.categoryIndex = 4
             table.theTitle = "Black Hole Badges"
-            table.aDescription = self.arrayOfDescriptions[4]
+            table.aDescription = self.categoryData![4]["description"].rawString()!
         case 5:
             table.categoryIndex = 5
             table.theTitle = "Challenger Patches"
-            table.aDescription = self.arrayOfDescriptions[5]
+            table.aDescription = self.categoryData![5]["description"].rawString()!
         default:
             table.theTitle = "Khan Academy"
         }
     }
 
+}
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("categoryBadge", forIndexPath: indexPath) as! CategoryCell
+        
+        let theLayer = cell.image.layer
+        theLayer.masksToBounds = false
+        theLayer.shadowColor = UIColor.blackColor().CGColor
+        theLayer.shadowRadius = 7.0
+        theLayer.shadowOpacity = 0.75
+        
+        
+        if let theData = categoryData {
+            cell.image.sd_setImageWithURL(NSURL(string: theData[indexPath.row]["large_icon_src"].rawString()!))
+            cell.aDescription.text = theData[indexPath.row]["type_label"].rawString()!
+        }
+        
+        return cell
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 6
+    }
+    
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        selectedCategory = indexPath.row
+        self.performSegueWithIdentifier("toTable", sender: self)
+    }
+    
 }
