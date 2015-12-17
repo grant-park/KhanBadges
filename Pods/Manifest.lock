@@ -1,0 +1,30 @@
+PODS:
+  - MBProgressHUD (0.9.1)
+  - NMPopUpViewSwift (3.0.1)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - MBProgressHUD (~> 0.9.1)
+  - NMPopUpViewSwift
+  - SDWebImage
+  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+
+EXTERNAL SOURCES:
+  SwiftyJSON:
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  SwiftyJSON:
+    :commit: 8e618c8baf6323a5079c6549bb38d48357b31630
+    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+
+SPEC CHECKSUMS:
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
+  NMPopUpViewSwift: 23a44d6db17a9abc6b806f9fac597be6d7e9f300
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0
